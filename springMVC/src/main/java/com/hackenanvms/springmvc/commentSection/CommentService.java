@@ -13,9 +13,9 @@ public class CommentService {
     private List<Comment> committedCommentList = new ArrayList<>();
 
     public CommentService(){
-        Comment comment1 = new Comment("This is the First Comment");// <body onload=alert(/XSS/.source)>
-        Comment comment2 = new Comment("This is the Second Comment");
-        Comment comment3 = new Comment("This is the 3 Comment");
+        Comment comment1 = new Comment("I like this Feature");// <body onload=alert(/XSS/.source)>
+        Comment comment2 = new Comment("Where is the content?!!");
+        Comment comment3 = new Comment("I like trains");
         this.addComment(comment1);
         this.addComment(comment2);
         this.addComment(comment3);

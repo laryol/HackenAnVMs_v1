@@ -4,13 +4,14 @@ import java.util.UUID;
 
 public class Container {
 
-    private final UUID containerId = UUID.randomUUID();
+    private final UUID containerId;
     private final String containerPassword;
     private final String containerName;
     private final String containerOwner;
     private final String content;
 
-    public Container(String containerPassword, String containerName, String containerOwner, String content){
+    public Container(String containerId, String containerPassword, String containerName, String containerOwner, String content){
+        this.containerId = UUID.fromString(containerId);
         this.containerPassword = containerPassword;
         this.containerName = containerName;
         this.containerOwner = containerOwner;

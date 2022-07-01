@@ -45,7 +45,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>MainUser</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

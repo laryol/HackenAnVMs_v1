@@ -60,10 +60,18 @@ public class InternController {
 
     @GetMapping("/storage/container")
     public String container(Model model, @RequestParam String id, @RequestParam String name){
-        model.addAttribute("containerId", id);
-        model.addAttribute("containerName", name);
-        model.addAttribute("containerPassword", "");
-        return "containerLogin";
+        try{
+            UUID containerID = UUID.fromString(id);
+            if(containerService.findContainerById(containerID)!= null){
+                model.addAttribute("containerId", id);
+                model.addAttribute("containerName", name);
+                model.addAttribute("containerPassword", "");
+                return "containerLogin";
+            }
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+        return "redirect:/intern/storage";
     }
 
     @PostMapping("/storage/container")
@@ -73,7 +81,7 @@ public class InternController {
             model.addAttribute("container", container);
             return "concreteContainer";
         }
-        return "redirect:/intern/storage/container?id="+id+"&name="+container.getContainerName()+"&error";
+        return "redirect:/intern/storage/container?error&id="+id+"&name="+container.getContainerName();
     }
 
     @GetMapping("/storage/container_forum")

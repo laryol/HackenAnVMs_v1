@@ -24,7 +24,7 @@
                     </div>
                 </div>
             <!--/*@thymesVar id="commentList" type="java.util.ArrayList"*/-->
-            <div style="height: 585px;" class="card-body overflow-scroll">
+            <div class="card-body">
                 <!--/*@thymesVar id="requestList" type="java.util.ArrayList"*/-->
                 <div th:each="request : ${requestList}" >
                     <div class="card shadow border-0 my-1 text-black rounded-0">
@@ -35,14 +35,14 @@
                             </div>
                             <div class="comment-text-sm">
                                 <!--/*@thymesVar id="requestMessage" type="java.lang.String"*/-->
-                                <a class="mb-3" th:href="${request.requestMessage}" th:text="${request.requestMessage}"></a>
+                                <a id="requestLink" class="mb-3" th:href="${request.requestMessage}" th:text="${request.requestMessage}"></a>
                             </div>
                             <!--/*@thymesVar id="newResponse" type="com.hackenanvms.springmvc.storageContainer.ContainerRequestResponse"*/-->
                             <div sec:authorize="hasRole('admin')">
                                 <form  method="post" th:action="@{/intern/storage/container_forum_new_response}" th:object="${newResponse}">
                                     <div class="d-flex flex-row input-group rounded-0 my-2 mt-2">
                                         <input type="hidden" th:value="${request.requestId}" id="respondedId" name="respondedId">
-                                        <input th:field="*{responseMessage}" type="text" class="form-control bg-light rounded-0" aria-describedby="addCommentBtn" placeholder="Enter your Response">
+                                        <input id="responseInput" th:field="*{responseMessage}" type="text" class="form-control bg-light rounded-0" aria-describedby="addCommentBtn" placeholder="Enter your Response">
                                         <button id="addResponseBtn" class="btn btn-primary rounded-0" type="submit">Commit</button>
                                     </div>
                                 </form>
